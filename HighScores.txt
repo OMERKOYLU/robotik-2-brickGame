@@ -1,0 +1,3 @@
+hatice,15
+akif,10
+asude,5
