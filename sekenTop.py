@@ -15,7 +15,7 @@ Vy=0.2
 puan=0
 mod="menu"
 RaketHiz=0 #1#raketHiz yeni değişken
-REKOR=False
+REKORKONTROL=False
 
 #1#####################################################<YENİ 08.05>
 yuksekSkorlar=open("./HighScores.txt","r")
@@ -158,11 +158,11 @@ while True:
         if bitti: #####oyun bitti yazısını burası yazıyor
             ekran.blit(goText,(10,200))
             ekran.blit(oyunSonuPuanText, (180, 150))
-            if not REKOR:
-                REKOR=True
+            #<1>##########################################<29-MAYIS>####
+            if not REKORKONTROL:
+                REKORKONTROL=True
                 index=0
                 sira=-1
-                ###########<<<<BURASI İLE İLGİLİ SIRALAMA ALGORİTMASI>>>>#######################
                 for s in skorlar:
                     if puan>=int(s.split(",")[1]):
                         sira=index
@@ -177,7 +177,14 @@ while True:
                             sTemp2 = skorlar[i]
                             skorlar[i] = sTemp
                             sTemp = sTemp2
+                    # <1>#######################################<05.06.2021>###
+                    f = open("./HighScores.txt", "w")
+                    for s in skorlar:
+                        f.write(s + "\n")
+                    f.close()
+                    ##########################################################
             print(skorlar)
+        #######################################################
     #2###################################################
     elif mod=="menu":
         m=menu()
